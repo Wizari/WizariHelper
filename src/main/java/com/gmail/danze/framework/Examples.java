@@ -1,6 +1,23 @@
 package com.gmail.danze.framework;
 
+import java.util.Arrays;
+
 public class Examples {
+
+    // Примеры
+
+// Копирование массива с уменьшением на 1 ячейку
+//    String x [] = Arrays.copyOf(y,y.length - 1);
+
+//    Универсальный массив и его преобразование в String массив
+//List<String> myList = new ArrayList<String>();
+//String[] y = myList.toArray(new String[0]);
+//    Не ок пахали
+//int[] arr = myList.stream().mapToInt(i -> i);
+//int[]  arr = myList.stream().filter(i -> i != null).mapToInt(i -> Integer.parseInt(i)).toArray(); //[1, 3, 4]
+
+
+
 
 
     public static void main(String[] args) {

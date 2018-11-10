@@ -1,8 +1,6 @@
 package com.gmail.danze.framework;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 // Нажать Clear > install
 public class DanzeHelper {
@@ -84,9 +82,10 @@ public class DanzeHelper {
         return c;
     }
 
+    // при получении 0 завершает цикл
     public static int[] inputNumbersZeroForExit() {
         int[] result = new int[0];
-        while (true){
+        while (true) {
             int number = inputNumber();
             if (number == 0) {
                 return result;
@@ -112,10 +111,60 @@ public class DanzeHelper {
 
     /**
      * Проверка четности суммы элементов массива
+     *
      * @param array массив для провреки
      * @return резульат проверки
      */
     public static boolean checkEvenDivider(int[] array) {
         return false;
+    }
+
+    /**
+     * Добавляем число к полному массиву
+     *
+     * @param add добавляем
+     * @return новый массив
+     */
+    public static boolean addOneInArr(int[] add) {
+        return false;
+    }
+
+
+    /**
+     * создает массив String. принимает по одному. остановить "q"
+     *
+     * @param выдает
+     * @return новый массив
+     */
+    public static String creatorArrStrStopQq() {
+        Scanner scan = new Scanner(System.in);
+        List<String> myList = new ArrayList<String>();
+
+        for (; ; ) {
+            String a = scan.nextLine();
+            myList.add(a);
+            if (a.equals("q")) {
+                String[] y = myList.toArray(new String[0]);
+                String x[] = Arrays.copyOf(y, y.length - 1);
+            }
+        }
+    }
+    public static int[] creatorArrIntStopQq() {
+        Scanner scan = new Scanner(System.in);
+        List<String> myList = new ArrayList<String>();
+
+        for (; ; ) {
+            String a = scan.nextLine();
+            myList.add(a);
+            if (a.equals("q")) {
+                String[] y = myList.toArray(new String[0]);
+                String x[] = Arrays.copyOf(y, y.length - 1);
+                int [] result = new int[x.length];
+                for(int i =0;i<result.length;i++)
+                    result[i] = Integer.parseInt(x[i].trim());
+                System.out.println(Arrays.toString(result));
+                return result;
+            }
+        }
     }
 }

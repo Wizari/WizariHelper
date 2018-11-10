@@ -53,4 +53,12 @@ public class DanzeHelperTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void addOneInArrTest() {
+//        int[] dividers = new int[]{1, 2, 5, 10};
+//        boolean actual = DanzeHelper.checkEvenDivider(dividers);
+//        boolean expected = true;
+//        assertEquals(expected, actual);
+    }
+
 }
