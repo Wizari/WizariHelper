@@ -53,12 +53,27 @@ public class DanzeHelperTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void addOneInArrTest() {
+//    @Test
+//    public void addOneInArrTest() {
 //        int[] dividers = new int[]{1, 2, 5, 10};
 //        boolean actual = DanzeHelper.checkEvenDivider(dividers);
 //        boolean expected = true;
 //        assertEquals(expected, actual);
-    }
+//    }
 
+//        @Test
+//    public void inputStringSequenceFromUseTest() {
+//            String [] dividers = new String[]{"1", "2", "3", "q"};
+//            int [] actual = new int[dividers.length];
+//            actual = {DanzeHelper.creatorArrIntStopQq}
+//            boolean expected = true;
+//            assertEquals(expected, actual);
+//        }
+
+    @Test
+    public void findMinElementTest() {
+        int[] array = new int[]{5, 1, 3};
+        int actual = DanzeHelper.findMinimumFromArray(array);
+        assertEquals(1, actual);
+    }
 }

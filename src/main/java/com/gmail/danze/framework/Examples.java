@@ -6,6 +6,9 @@ public class Examples {
 
     // Примеры
 
+//    при ошибке Arrays [Ljava.lang.String; [I@32a1bec0
+//    System.out.println(Arrays.toString(strings));
+
 // Копирование массива с уменьшением на 1 ячейку
 //    String x [] = Arrays.copyOf(y,y.length - 1);
 
@@ -13,6 +16,7 @@ public class Examples {
 //List<String> myList = new ArrayList<String>();
 //String[] y = myList.toArray(new String[0]);
 //    Не ок пахали
+
 //int[] arr = myList.stream().mapToInt(i -> i);
 //int[]  arr = myList.stream().filter(i -> i != null).mapToInt(i -> Integer.parseInt(i)).toArray(); //[1, 3, 4]
 

@@ -133,10 +133,10 @@ public class DanzeHelper {
     /**
      * создает массив String. принимает по одному. остановить "q"
      *
-     * @param выдает
-     * @return новый массив
+     * @param
+     * @return
      */
-    public static String creatorArrStrStopQq() {
+    public static String[] inputStringSequenceFromUser() {
         Scanner scan = new Scanner(System.in);
         List<String> myList = new ArrayList<String>();
 
@@ -146,10 +146,17 @@ public class DanzeHelper {
             if (a.equals("q")) {
                 String[] y = myList.toArray(new String[0]);
                 String x[] = Arrays.copyOf(y, y.length - 1);
+                return x;
             }
         }
     }
-    public static int[] creatorArrIntStopQq() {
+
+    /**
+     * Принимает символы по одному и создает массив. Остановка по "q"
+     *
+     * @return массив в
+     */
+    public static int[] inputIntSequenceFromUser() {
         Scanner scan = new Scanner(System.in);
         List<String> myList = new ArrayList<String>();
 
@@ -159,12 +166,60 @@ public class DanzeHelper {
             if (a.equals("q")) {
                 String[] y = myList.toArray(new String[0]);
                 String x[] = Arrays.copyOf(y, y.length - 1);
-                int [] result = new int[x.length];
-                for(int i =0;i<result.length;i++)
+                int[] result = new int[x.length];
+                for (int i = 0; i < result.length; i++)
                     result[i] = Integer.parseInt(x[i].trim());
-                System.out.println(Arrays.toString(result));
                 return result;
             }
         }
     }
+
+    public static int[] inputIntSequenceFromUser2() {
+        Scanner scan = new Scanner(System.in);
+        List<String> myList = new ArrayList<String>();
+
+        while (true) {
+            String a = scan.nextLine();
+            myList.add(a);
+            if (a.equals("q")) {
+                String[] y = myList.toArray(new String[0]);
+                String x[] = Arrays.copyOf(y, y.length - 1);
+                int[] result = Arrays.stream(x).mapToInt(Integer::parseInt).toArray();
+                return result;
+            }
+        }
+    }
+
+
+
+//    public static int findMinimumFromArray(int[] array) {
+//        Arrays.sort(array);
+//        int sarray[] = Arrays.copyOf(array, 0);
+//        int result = 0;
+//        if (result == 0) {
+//            result = result + array[0];
+//        }
+//        return result;
+//    }
+
+    /**
+     * Запрашивает нужный размер и числа по одному.
+     * первый запрос размер массива
+     * @return массив
+     */
+    public static int[] inputLengthIntSequenceFromUser() {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Длинна массива: ");
+        int iscan = scan.nextInt();
+        int[] array = new int[iscan];
+        for (int i = 0; i < iscan; i++) {
+            System.out.println("Введите " +(i+1)+"-ое число из "+iscan+": ");
+            Scanner arrScan = new Scanner(System.in);
+            array[i] = arrScan.nextInt();
+        }
+        return array;
+    }
+
 }
+
+
