@@ -47,10 +47,13 @@ public class DanzeHelperTest {
 
     @Test
     public void checkEvenDividerTest() {
-        int[] dividers = new int[]{1, 2, 5, 10};
-        boolean actual = DanzeHelper.checkEvenDivider(dividers);
-        boolean expected = true;
-        assertEquals(expected, actual);
+        int[] array = new int[]{1, 2, 2, 5, 4};
+        int[] actual = DanzeHelper.checkEvenDivider(array);
+        int[] expected = new int[]{2, 2, 4};
+
+        assertEquals(expected[0], actual[0]);
+        assertEquals(expected[1], actual[1]);
+        assertEquals(expected[2], actual[2]);
     }
 
 //    @Test
@@ -76,4 +79,14 @@ public class DanzeHelperTest {
         int actual = DanzeHelper.findMinimumFromArray(array);
         assertEquals(1, actual);
     }
+
+    @Test
+    public void sumAllDividerTest() {
+        int[] array = new int[]{1, 2, 3};
+        int actual = DanzeHelper.sumAllDivider(array);
+
+        assertEquals(6, actual);
+    }
 }
+
+

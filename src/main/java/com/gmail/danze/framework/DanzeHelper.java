@@ -34,12 +34,6 @@ public class DanzeHelper {
         return thereAndHere(a, b);
     }
 
-    public static int inputNumber() {
-        System.out.print("Ввведите число: ");
-        Scanner scanner = new Scanner(System.in);
-        int number = scanner.nextInt();
-        return number;
-    }
 
     /**
      * Позволяет ввести несколько чисел
@@ -106,7 +100,17 @@ public class DanzeHelper {
     }
 
     public static int[] finAllDividers(int number) {
-        return null;
+        List<Integer> result = new ArrayList<>();
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                result.add(i);
+            }
+        }
+        int[] ints = new int[result.size()];
+        for (int i = 0; i < result.size(); i++) {
+            ints[i] = result.get(i);
+        }
+        return ints;
     }
 
     /**
@@ -115,9 +119,29 @@ public class DanzeHelper {
      * @param array массив для провреки
      * @return резульат проверки
      */
-    public static boolean checkEvenDivider(int[] array) {
-        return false;
+    public static int[] checkEvenDivider(int[] array) {
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i <= array.length - 1; i++) {
+
+            if (array[i] % 2 == 0) {
+                result.add(array[i]);
+            }
+        }
+        int[] ints = new int[result.size()];
+        for (int i = 0; i < result.size(); i++) {
+            ints[i] = result.get(i);
+        }
+        return ints;
     }
+
+    public static int sumAllDivider(int[] array) {
+        int sum = 0;
+        for (int i = 0; i <= array.length - 1; i++) {
+        sum += array[i];
+        }
+        return sum;
+    }
+
 
     /**
      * Добавляем число к полному массиву
@@ -125,9 +149,9 @@ public class DanzeHelper {
      * @param add добавляем
      * @return новый массив
      */
-    public static boolean addOneInArr(int[] add) {
-        return false;
-    }
+//    public static boolean addOneInArr(int[] add) {
+//        return false;
+//    }
 
 
     /**
@@ -156,14 +180,13 @@ public class DanzeHelper {
      *
      * @return массив в
      */
-    public static int[] inputIntSequenceFromUser() {
+    public static int[] inputIntSequenceFromUser(String exitCommand) {
         Scanner scan = new Scanner(System.in);
-        List<String> myList = new ArrayList<String>();
+            List<String> myList = new ArrayList<String>();
 
         for (; ; ) {
             String a = scan.nextLine();
-            myList.add(a);
-            if (a.equals("q")) {
+            if (a.equals(exitCommand)) {
                 String[] y = myList.toArray(new String[0]);
                 String x[] = Arrays.copyOf(y, y.length - 1);
                 int[] result = new int[x.length];
@@ -171,51 +194,78 @@ public class DanzeHelper {
                     result[i] = Integer.parseInt(x[i].trim());
                 return result;
             }
-        }
-    }
-
-    public static int[] inputIntSequenceFromUser2() {
-        Scanner scan = new Scanner(System.in);
-        List<String> myList = new ArrayList<String>();
-
-        while (true) {
-            String a = scan.nextLine();
             myList.add(a);
-            if (a.equals("q")) {
-                String[] y = myList.toArray(new String[0]);
-                String x[] = Arrays.copyOf(y, y.length - 1);
-                int[] result = Arrays.stream(x).mapToInt(Integer::parseInt).toArray();
-                return result;
-            }
         }
     }
 
-
-
-//    public static int findMinimumFromArray(int[] array) {
-//        Arrays.sort(array);
-//        int sarray[] = Arrays.copyOf(array, 0);
-//        int result = 0;
-//        if (result == 0) {
-//            result = result + array[0];
+//    public static int[] inputIntSequenceFromUserUsingList() {
+//        Scanner scan = new Scanner(System.in);
+//        List<String> myList = new ArrayList<String>();
+//
+//        while (true) {
+//            String a = scan.nextLine();
+//            myList.add(a);
+//            if (a.equals("q")) {
+//                String[] y = myList.toArray(new String[0]);
+//                String x[] = Arrays.copyOf(y, y.length - 1);
+//                int[] result = Arrays.stream(x).mapToInt(Integer::parseInt).toArray();
+//                return result;
+//            }
 //        }
-//        return result;
 //    }
 
+
+    public static int findMinimumFromArray(int[] array) {
+        Arrays.sort(array);
+        int sarray[] = Arrays.copyOf(array, 0);
+        int result = 0;
+        if (result == 0) {
+            result = result + array[0];
+        }
+        return result;
+    }
+
+    public static int inputNumber() {
+        System.out.print("Ввведите число: ");
+        Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+        return number;
+    }
+
+    public static int inputNumber(String promptMessage) {
+        System.out.print(promptMessage);
+        Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+        return number;
+    }
+
     /**
-     * Запрашивает нужный размер и числа по одному.
+     * Запрашивает нужный размер массива int и числа по одному.
      * первый запрос размер массива
+     *
      * @return массив
      */
-    public static int[] inputLengthIntSequenceFromUser() {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Длинна массива: ");
-        int iscan = scan.nextInt();
-        int[] array = new int[iscan];
-        for (int i = 0; i < iscan; i++) {
-            System.out.println("Введите " +(i+1)+"-ое число из "+iscan+": ");
-            Scanner arrScan = new Scanner(System.in);
-            array[i] = arrScan.nextInt();
+    public static int[] inputLengthIntSequenceFromUser(int length) {
+        int[] array = new int[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = DanzeHelper.inputNumber("Введите " + (i + 1) + "-ое число из " + length + ": ");
+        }
+        return array;
+    }
+
+    /**
+     * Запрашивает нужный размер массива int и числа по одному.
+     * первый запрос размер массива
+     *
+     * @return массив
+     */
+    public static int[] inputLengthIntSequenceFromRandom(int length) {
+        int[] array = new int[length];
+        for (int i = 0; i < length; i++) {
+            System.out.print("Введите " + (i + 1) + "-ое число из " + length + ": ");
+            int random = generateRandom(0, 100);
+            System.out.println(random);
+            array[i] = random;
         }
         return array;
     }
