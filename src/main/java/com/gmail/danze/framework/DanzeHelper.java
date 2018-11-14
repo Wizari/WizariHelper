@@ -160,14 +160,14 @@ public class DanzeHelper {
      * @param
      * @return
      */
-    public static String[] inputStringSequenceFromUser() {
+    public static String[] inputStringSequenceFromUser(String exitCommand) {
         Scanner scan = new Scanner(System.in);
         List<String> myList = new ArrayList<String>();
 
         for (; ; ) {
             String a = scan.nextLine();
             myList.add(a);
-            if (a.equals("q")) {
+            if (a.equals(exitCommand)) {
                 String[] y = myList.toArray(new String[0]);
                 String x[] = Arrays.copyOf(y, y.length - 1);
                 return x;

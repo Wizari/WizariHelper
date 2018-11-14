@@ -6,6 +6,8 @@ public class Examples {
 
     // Примеры
 
+//Справка по полю Cntrl + p
+
 //    при ошибке Arrays [Ljava.lang.String; [I@32a1bec0
 //    System.out.println(Arrays.toString(strings));
 
