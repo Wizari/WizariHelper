@@ -20,6 +20,11 @@ public class DanzeHelper {
 
     //рандом возможно нужен import java.util.Random;
     public static int generateRandom(int min, int max) {
+        if (min > max) {
+            int temp = min;
+            min = max;
+            max = temp;
+        }
         Random rnd = new Random();
         int number = min + rnd.nextInt(max - min + 1);
         return number;

@@ -4,7 +4,7 @@
 
 * reverseLine
 * generateRandom
-* +1-1
+
 
 
 * IDEA Интерфейс

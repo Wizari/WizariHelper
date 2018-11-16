@@ -6,6 +6,10 @@ public class Examples {
 
     // Примеры
 
+//    alt+insert - мини меню...
+
+//    shift+f6 изменить названия переменной во всех полях
+
 //Справка по полю Cntrl + p
 
 //    при ошибке Arrays [Ljava.lang.String; [I@32a1bec0

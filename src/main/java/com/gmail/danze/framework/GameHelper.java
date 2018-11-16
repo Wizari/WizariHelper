@@ -1,5 +1,7 @@
 package com.gmail.danze.framework;
 
+import com.gmail.danze.framework.exceptions.DanzeInfoException;
+
 public class GameHelper {
 
     /**
@@ -22,6 +24,55 @@ public class GameHelper {
         }
         return rotate;
     }
+
+    public static boolean checkMove(int x, int y, int[][] area, int[][] shape, Direction direction) {
+        if (area.length <= shape.length) {
+            throw new DanzeInfoException("Что та пошло не так фигура больше поля ОМГ лол!!!1111");
+        }
+        if (x < 0 || y < 0) {
+            throw new DanzeInfoException("А координаты то отрицательные! Упс");
+        }
+
+        if (direction.equals(Direction.LEFT)) {
+            int xLeft = x;
+            for (int i = 0; i < shape.length; i++, xLeft++) {
+                int yLeft = y - 1;
+                for (int j = 0; j < shape[x].length; j++, yLeft++) {
+                    if  ((area[xLeft][yLeft] += shape[i][j])== 2){
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        if (direction.equals(Direction.RIGHT)) {
+            int xLeft = x;
+            for (int i = 0; i < shape.length; i++, xLeft++) {
+                int yLeft = y + 1;
+                for (int j = 0; j < shape[x].length; j++, yLeft++) {
+                    if  ((area[xLeft][yLeft] += shape[i][j])== 2){
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        if (direction.equals(Direction.DOWN)) {
+            int xLeft = x + 1;
+            for (int i = 0; i < shape.length; i++, xLeft++) {
+                int yLeft = y;
+                for (int j = 0; j < shape[x].length; j++, yLeft++) {
+                    if  ((area[xLeft][yLeft] += shape[i][j])== 2){
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        throw new RuntimeException("Неизвестная Direction");
+    }
+//        return false;
 }
 
 
