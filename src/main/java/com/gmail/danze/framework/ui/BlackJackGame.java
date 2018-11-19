@@ -21,7 +21,6 @@ public class BlackJackGame {
                 "Clubs 8", "Diamonds 8", "Hearts 8", "Spades 8",
                 "Clubs 9", "Diamonds 9", "Hearts 9", "Spades 9",
                 "Clubs 10", "Diamonds 10", "Hearts 10", "Spades 10",
-
                 "Clubs Jack", "Diamonds Jack", "Hearts Jack", "Spades Jack",
                 "Clubs Queen", "Diamonds Queen", "Hearts Queen", "Spades Queen",
                 "Clubs King", "Diamonds King", "Hearts King", "Spades King",
@@ -44,78 +43,8 @@ public class BlackJackGame {
                 11, 11, 11, 11,
         };
 
-
-//        System.out.println(p1s);
-//        System.out.println(p1i);
-////        System.out.println(dealer);
-//        JButton exitButton = new JButton("EXIT");
-//        exitButton.setBounds(50, 50, 200, 70);
-//
-////
-////        GameAreaPanel panel = new GameAreaPanel(12, 22);
-////        panel.setBounds(100, 50, panel.WIDTH * panel.POINT_SIZE, panel.HEIGHT * panel.POINT_SIZE);
-////        panel.updateGameArea(gameArea);
-//
-//        JPanel panel = new JPanel();
-//        panel.setLayout(null);
-//        panel.add(exitButton);
-//
-//        JFrame frame = new JFrame("TETRIS");
-//        frame.setLayout(null);
-//        frame.setSize(600, 800);
-//        frame.setLocationRelativeTo(null);
-//        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//        frame.add(panel);
-//        frame.setVisible(true);
-//
-//        exitButton.addActionListener(e -> {
-//            frame.dispose();
-//        });
-
-
-//        JButton exitButton = new JButton("EXIT");
-//        exitButton.setBounds(50, 50, 200, 70);
-////        getContentPane().add(exitButton);
-//        JPanel panel = new JPanel();
-//        panel.setLayout();
-//        panel.add(exitButton);
-
-
-//        JFrame myWindow = new BlackJWindow();
-//        myWindow.setVisible(true);
-
-//        JButton exitButton = new JButton("EXIT");
-//        JButton newButton = new JButton();
-//        exitButton.setBounds(50, 50, 200, 70);
-//        panel.setLayout();
-//        getContentPane(myWindow).add(exitButton);
-
-
-
-
-
-
-
-
-
-
-
-//        frame.getContentPane().add(new JButton("Кнопка"), BorderLayout.NORTH);
-
-//        JButton newButton = new JButton();
-//        getContentPane().add(newButton);
-        //
-
-
-
-        List<Integer> a = new ArrayList<>();
-        List<Integer> b = new ArrayList<>();
         List<Integer> dealer = BlackJackHelper.dealer();
-//        dealer
-
         int p1summ = 0;
-        int i =1;
-        int p1summ2 = deckWeight[dealer.get(i++)];
         p1summ = deckWeight[dealer.get(0)];
 //        p1card = deck.get(dealer.get (0));
 
@@ -176,6 +105,44 @@ public class BlackJackGame {
 
 
     }
+
+    //        System.out.println(p1s);
+//        System.out.println(p1i);
+//        System.out.println(dealer);
+//        JButton exitButton = new JButton("EXIT");
+//        exitButton.setBounds(50, 50, 200, 70);
+//        GameAreaPanel panel = new GameAreaPanel(12, 22);
+//        panel.setBounds(100, 50, panel.WIDTH * panel.POINT_SIZE, panel.HEIGHT * panel.POINT_SIZE);
+//        panel.updateGameArea(gameArea);
+//        JPanel panel = new JPanel();
+//        panel.setLayout(null);
+//        panel.add(exitButton);
+//        JFrame frame = new JFrame("TETRIS");
+//        frame.setLayout(null);
+//        frame.setSize(600, 800);
+//        frame.setLocationRelativeTo(null);
+//        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//        frame.add(panel);
+//        frame.setVisible(true);
+//        exitButton.addActionListener(e -> {
+//            frame.dispose();
+//        });
+//        JButton exitButton = new JButton("EXIT");
+//        exitButton.setBounds(50, 50, 200, 70);
+////        getContentPane().add(exitButton);
+//        JPanel panel = new JPanel();
+//        panel.setLayout();
+//        panel.add(exitButton);
+//        JFrame myWindow = new BlackJWindow();
+//        myWindow.setVisible(true);
+//        JButton exitButton = new JButton("EXIT");
+//        JButton newButton = new JButton();
+//        exitButton.setBounds(50, 50, 200, 70);
+//        panel.setLayout();
+//        getContentPane(myWindow).add(exitButton);
+//        frame.getContentPane().add(new JButton("Кнопка"), BorderLayout.NORTH);
+//        JButton newButton = new JButton();
+//        getContentPane().add(newButton);
 
 }
 
