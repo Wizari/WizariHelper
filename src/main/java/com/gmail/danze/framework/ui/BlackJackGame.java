@@ -1,9 +1,14 @@
 package com.gmail.danze.framework.ui;
 
 import com.gmail.danze.framework.BlackJackHelper;
+import com.gmail.danze.framework.game.Card;
+import com.gmail.danze.framework.game.CardValue;
+import com.gmail.danze.framework.game.Suit;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,97 +16,49 @@ import java.util.List;
 public class BlackJackGame {
     public static void main(String[] args) {
 
-        List<String> deck = Arrays.asList(new String[]{
-                "Clubs 2", "Diamonds 2", "Hearts 2", "Spades 2",
-                "Clubs 3", "Diamonds 3", "Hearts 3", "Spades 3",
-                "Clubs 4", "Diamonds 4", "Hearts 4", "Spades 4",
-                "Clubs 5", "Diamonds 5", "Hearts 5", "Spades 5",
-                "Clubs 6", "Diamonds 6", "Hearts 6", "Spades 6",
-                "Clubs 7", "Diamonds 7", "Hearts 7", "Spades 7",
-                "Clubs 8", "Diamonds 8", "Hearts 8", "Spades 8",
-                "Clubs 9", "Diamonds 9", "Hearts 9", "Spades 9",
-                "Clubs 10", "Diamonds 10", "Hearts 10", "Spades 10",
-                "Clubs Jack", "Diamonds Jack", "Hearts Jack", "Spades Jack",
-                "Clubs Queen", "Diamonds Queen", "Hearts Queen", "Spades Queen",
-                "Clubs King", "Diamonds King", "Hearts King", "Spades King",
-                "Clubs Ace", "Diamonds Ace", "Hearts Ace", "Spades Ace",
-        });
-        int deckWeight[] = new int[]{
-                2, 2, 2, 2,
-                3, 3, 3, 3,
-                4, 4, 4, 4,
-                5, 5, 5, 5,
-                6, 6, 6, 6,
-                7, 7, 7, 7,
-                8, 8, 8, 8,
-                9, 9, 9, 9,
-                10, 10, 10, 10,
 
-                10, 10, 10, 10,
-                10, 10, 10, 10,
-                10, 10, 10, 10,
-                11, 11, 11, 11,
-        };
 
         List<Integer> dealer = BlackJackHelper.dealer();
-        int p1summ = 0;
-        p1summ = deckWeight[dealer.get(0)];
-//        p1card = deck.get(dealer.get (0));
 
         int p1i;
-        String p2card;
-//        p2card = deckWeight[dealer.get()];
 
 
-        JFrame frame = new JFrame("Black Jack");
-        frame.setLayout(null);
-        frame.setSize(800, 800);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        BlackJWindow gameWindow = new BlackJWindow("BlackJack");
+        gameWindow.setVisible(true);
 
-//        frame.getContentPane().add(new JButton("Кнопка"), BorderLayout.NORTH);
-//        frame.add(panel);
-        JButton p1sum = new JButton("Вы набрали: " + p1summ);
-        JButton newButton = new JButton();
-        p1sum.setBounds(50, 50, 300, 50);
-        p1sum.setLayout(null);
-//        exitButton.setLayout(new FlowLayout());
-        frame.getContentPane().add(p1sum);
-        frame.setVisible(true);
-//        exitButton.addActionListener(e -> {
-//            frame.dispose();
-//        });
+        List<Card> cards = new ArrayList<>();
+        cards.add(new Card(Suit.CLUBS, CardValue.ACE));
+        cards.add(new Card(Suit.SPADES, CardValue.NINE));
 
 
-        JButton p1deck = new JButton(deck.get(dealer.get (0)));
-        p1deck.setBounds(50, 100, 300, 50);
-        p1deck.setLayout(null);
-        frame.getContentPane().add(p1deck);
-//        frame.setVisible(true);
-//        p1deck.addActionListener(e -> {
-//            frame.dispose();
-//        });
+        int score = 0;
+        for (Card card : cards) {
+            score += card.getValue().getScore();
+        }
+//        for (int i = 0; i < cards.size(); i++) {
+//            Card card = cards.get(i);
+//            score += card.getValue().getScore();
+//        }
 
-        JButton p2sum = new JButton(deck.get(dealer.get (0)));
-        p2sum.setBounds(350, 50, 300, 50);
-        p2sum.setLayout(null);
-        frame.getContentPane().add(p2sum);
-//        frame.setVisible(true);
-//        p1deck.addActionListener(e -> {
-//            frame.dispose();
-//        });
+        gameWindow.updateCards(cards);
+        gameWindow.updateScore(score);
 
-        JButton p2deck = new JButton(deck.get(dealer.get (0)));
-        p2deck.setBounds(350, 100, 300, 50);
-        p2deck.setLayout(null);
-        frame.getContentPane().add(p2deck);
-//        frame.setVisible(true);
-//        p2deck.addActionListener(e -> p1summ2+1);
+        gameWindow.addHitListener(e -> {
+            cards.add(new Card(Suit.SPADES, CardValue.NINE));
+               int result = 0;
+            for (Card card : cards) {
+                result += card.getValue().getScore();
+            }
+            gameWindow.updateCards(cards);
+            gameWindow.updateScore(result);
+        });
 
 
 
+        gameWindow.addStandListener(e -> {
+            System.out.println("Нажата кнопка Stand");
+        });
 
-//        List<Integer> dealer = BlackJackHelper.dealer();
 
 
     }
