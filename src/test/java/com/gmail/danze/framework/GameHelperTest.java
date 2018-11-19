@@ -75,7 +75,7 @@ public class GameHelperTest {
 
         int shape[][] = new int[][]{{0, 1, 0}, {0, 1, 0}, {0, 1, 1}};
 
-        boolean actual = GameHelper.checkMove(-1, -1, this.area, shape, Direction.RIGHT);
+        boolean actual = GameHelper.checkMove(15, 5, this.area, shape, Direction.RIGHT);
         boolean expected = true;
 
         assertEquals(expected, actual);
@@ -90,5 +90,159 @@ public class GameHelperTest {
         boolean expected = true;
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void moveShareToLeftImpossible2Test() {
+
+        int shape[][] = new int[][]{{0, 0, 1, 0}, {0, 0, 1, 0}, {0, 0, 1, 0}, {0, 0, 1, 0},};
+
+        boolean actual = GameHelper.checkMove(1, 0, this.area, shape, Direction.LEFT);
+        boolean expected = true;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void moveShareToLeftNotImpossible2Test() {
+
+        int shape[][] = new int[][]{{0, 1, 1, 0}, {0, 1, 1, 0}, {0, 1, 1, 0}, {0, 1, 1, 0},};
+
+        boolean actual = GameHelper.checkMove(15, 0, this.area, shape, Direction.LEFT);
+        boolean expected = false;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void moveShareToRightImpossible2Test() {
+
+        int shape[][] = new int[][]{{0, 1, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0},};
+
+        boolean actual = GameHelper.checkMove(15, 8, this.area, shape, Direction.RIGHT);
+        boolean expected = true;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void moveShareToRightNotImpossible2Test() {
+
+        int shape[][] = new int[][]{{0, 1, 1, 0}, {0, 1, 1, 0}, {0, 1, 1, 0}, {0, 1, 1, 0},};
+
+        boolean actual = GameHelper.checkMove(1, 8, this.area, shape, Direction.RIGHT);
+        boolean expected = false;
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void moveShareToDownNotImpossible2Test() {
+
+        int shape[][] = new int[][]{{0, 1, 0, 0}, {0, 1, 0, 0}, {0, 1, 0, 0}, {0, 1, 0, 0},};
+
+        boolean actual = GameHelper.checkMove(19, 1, this.area, shape, Direction.DOWN);
+        boolean expected = false;
+
+        assertEquals(expected, actual);
+    }
+
+
+
+    /////////////////////////////////////////////////////////////////
+
+    @Test
+    public void rotateFigureITest() {
+
+        int array[][] = new int[][]{{0, 1, 0}, {0, 1, 0}, {0, 1, 1}};
+        int expected[][] = new int[][]{{0, 0, 0}, {1, 1, 1}, {1, 0, 0}};
+        int[][] actual = GameHelper.rotateFigure(array, Figure.L);
+        assertTrue(Arrays.deepEquals(expected, actual));
+    }
+
+
+    @Test
+    public void rotateFigureOTest() {
+
+        int array[][] = new int[][]{{1, 1}, {1, 1}};
+        int expected[][] = new int[][]{{1, 1}, {1, 1}};
+        int[][] actual = GameHelper.rotateFigure(array, Figure.O);
+        assertTrue(Arrays.deepEquals(expected, actual));
+    }
+
+
+    @Test
+    public void rotateFigureJTest() {
+
+        int array[][] = new int[][]{{0, 1, 0}, {0, 1, 0}, {1, 1, 0}};
+        int expected[][] = new int[][]{{1, 0, 0}, {1, 1, 1}, {0, 0, 0}};
+        int[][] actual = GameHelper.rotateFigure(array, Figure.J);
+        assertTrue(Arrays.deepEquals(expected, actual));
+    }
+
+
+    @Test
+    public void rotateFigureSTest() {
+
+        int array[][] = new int[][]{{0, 1, 1}, {1, 1, 0}, {0, 0, 0}};
+        int expected[][] = new int[][]{{0, 1, 0}, {0, 1, 1}, {0, 0, 1}};
+        int[][] actual = GameHelper.rotateFigure(array, Figure.S);
+        assertTrue(Arrays.deepEquals(expected, actual));
+    }
+
+
+//    @Test
+//    public void notRotateFigureSTest() {
+//
+//        int array[][] = new int[][]{{0, 1, 1}, {1, 1, 0}, {0, 0, 0}};
+//        int expected[][] = new int[][]{{0, 1, 0}, {0, 1, 1}, {0, 0, 1}};
+//        int[][] actual = GameHelper.rotateFigure(array, Figure.S);
+////        assertNotEquals(array[][]);
+////        assertTrue(Arrays.deepEquals(expected, actual));
+//        assertNotEquals(expected[0][2], actual[0][2]);
+//    }
+
+
+    @Test
+    public void rotateFigureZTest() {
+
+        int array[][] = new int[][]{{1, 1, 0}, {0, 1, 1}, {0, 0, 0}};
+        int expected[][] = new int[][]{{0, 0, 1}, {0, 1, 1}, {0, 1, 0}};
+        int[][] actual = GameHelper.rotateFigure(array, Figure.Z);
+        assertTrue(Arrays.deepEquals(expected, actual));
+    }
+
+
+    @Test
+    public void rotateFigureTTest() {
+
+        int array[][] = new int[][]{{0, 1, 0}, {1, 1, 1}, {0, 0, 0}};
+        int expected[][] = new int[][]{{0, 1, 0}, {0, 1, 1}, {0, 1, 0}};
+        int[][] actual = GameHelper.rotateFigure(array, Figure.T);
+        assertTrue(Arrays.deepEquals(expected, actual));
+    }
+
+
+    @Test
+    public void rotateFigureLTest() {
+
+        int array[][] = new int[][]{{0, 1, 0}, {0, 1, 0}, {0, 1, 1}};
+        int expected[][] = new int[][]{{0, 0, 0}, {1, 1, 1}, {1, 0, 0}};
+        int[][] actual = GameHelper.rotateFigure(array, Figure.L);
+        assertTrue(Arrays.deepEquals(expected, actual));
+    }
+
+
+    @Test
+    public void rotateFigureL2Test() {
+
+        int array[][] = new int[][]{{0, 1, 0}, {0, 1, 0}, {0, 1, 1}};
+        int expected[][] = new int[][]{{1, 1, 0}, {0, 1, 0}, {0, 1, 0}};
+
+        int[][] aActual = GameHelper.rotateFigure(array, Figure.L);
+        int[][] actual = GameHelper.rotateFigure(aActual, Figure.L);
+
+        assertTrue(Arrays.deepEquals(expected, actual));
     }
 }
