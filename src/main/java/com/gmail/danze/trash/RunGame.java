@@ -1,4 +1,4 @@
-package com.gmail.danze.framework.game;
+package com.gmail.danze.trash;
 
 
 import com.r78.game.GameAreaPanel;

@@ -1,8 +1,6 @@
-package com.gmail.danze.framework;
+package com.gmail.danze.trash.application;
 
 import com.gmail.danze.framework.exceptions.DanzeInfoException;
-
-import java.util.List;
 
 public class GameHelper {
 //    public final int[][] iShape = new int[][]{{0, 0, 1, 0}, {0, 0, 1, 0}, {0, 0, 1, 0}, {0, 0, 1, 0},};

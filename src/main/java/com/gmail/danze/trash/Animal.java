@@ -1,4 +1,4 @@
-package com.gmail.danze.framework;
+package com.gmail.danze.trash;
 
 public class Animal {
     private final int id;

@@ -52,7 +52,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.gmail.danze.framework.game.RunGame</mainClass>
+                            <mainClass>com.gmail.danze.trash.RunGame</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

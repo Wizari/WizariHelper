@@ -1,4 +1,4 @@
-package com.gmail.danze.framework.game;
+package com.gmail.danze.games.blackjack.model;
 
 public class Card {
 

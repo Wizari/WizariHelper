@@ -1,7 +1,8 @@
 package com.gmail.danze.framework;
 
+import com.gmail.danze.trash.application.DanzeHelper;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**Дана строка символов. Группы символов, разделенные

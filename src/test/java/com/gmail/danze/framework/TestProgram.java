@@ -1,5 +1,7 @@
 package com.gmail.danze.framework;
 
+import com.gmail.danze.trash.application.DanzeHelper;
+
 import java.util.Arrays;
 
 public class TestProgram {

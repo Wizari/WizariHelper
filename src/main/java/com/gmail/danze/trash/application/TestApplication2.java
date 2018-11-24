@@ -1,10 +1,8 @@
-package com.gmail.danze.framework.application;
+package com.gmail.danze.trash.application;
 
-import com.gmail.danze.framework.Animal;
-import com.gmail.danze.framework.DanzeHelper;
+import com.gmail.danze.trash.Animal;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 // Animal - класс (продвинутая переменная) которая может выполнять действия сама над собой.
 // name - атрибут. dog.name = "Pes"; заполняем поля класса.

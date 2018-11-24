@@ -1,8 +1,6 @@
-package com.gmail.danze.framework.ui;
+package com.gmail.danze.trash;
 
-import com.gmail.danze.framework.DanzeHelper;
-import com.gmail.danze.framework.GameHelper;
-import sun.security.krb5.internal.PAData;
+import com.gmail.danze.trash.application.DanzeHelper;
 
 import javax.swing.*;
 

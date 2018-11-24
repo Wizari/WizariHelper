@@ -1,5 +1,8 @@
 package com.gmail.danze.framework;
 
+import com.gmail.danze.trash.application.Direction;
+import com.gmail.danze.trash.application.Figure;
+import com.gmail.danze.trash.application.GameHelper;
 import org.junit.Test;
 
 import java.util.Arrays;

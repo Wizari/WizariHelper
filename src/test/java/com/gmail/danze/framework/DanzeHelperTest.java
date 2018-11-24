@@ -1,5 +1,6 @@
 package com.gmail.danze.framework;
 
+import com.gmail.danze.trash.application.DanzeHelper;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
