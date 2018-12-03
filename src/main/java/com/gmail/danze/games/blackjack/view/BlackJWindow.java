@@ -19,22 +19,37 @@ public class BlackJWindow extends JFrame {
 
     public BlackJWindow(String title) {
         super(title);
+
+        this.cardDealerView = this.constructDealerCardView();
+        this.cardPlayerView = this.constructPlayerCardView();
+        JPanel contentPanel = new JPanel();
+        contentPanel.setLayout(null);
+        contentPanel.add(this.cardPlayerView);
+        contentPanel.add(this.cardDealerView);
+
         this.setLayout(null);
         this.setSize(800, 800);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setLayout(new BorderLayout());
-        this.add(this.constructPlayerCardView(), BorderLayout.WEST);
-        this.add(this.constructDealerCardView(), BorderLayout.EAST);
-        this.add(this.constructResultView(), BorderLayout.CENTER);
-        this.add(this.constructButtonPanel(), BorderLayout.SOUTH);
+        this.setContentPane(contentPanel);
+
+
+//        this.add(this.constructResultView(), BorderLayout.CENTER);  <<--- Сам
+//        this.add(this.constructButtonPanel(), BorderLayout.SOUTH);  <<--- Сам
     }
 
-    private Component constructDealerCardView() {
+    private JPanel constructDealerCardView() {
         JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        this.cardDealerView = panel;
-        return this.cardDealerView;
+        panel.setLayout(null);
+        panel.setBounds(600, 10, 200, 800);
+        return panel;
+    }
+
+    private JPanel constructPlayerCardView() {
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setBounds(0, 10, 200, 800);
+        return panel;
     }
 
     private Component constructButtonPanel() {
@@ -59,31 +74,31 @@ public class BlackJWindow extends JFrame {
         return centerPanel;
     }
 
-    private Component constructPlayerCardView() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        this.cardPlayerView = panel;
-        return this.cardPlayerView;
-    }
 
-    public Component selectImage(Card card) {
+
+    public Component selectImage(Card card, int index) {
+
         JPanel panel = new JPanel();
+        panel.setLayout(null);
+        int height = 30;
+        panel.setBounds(0, index * height, 200, height);
 
         ImageIcon imageIcon = null;
         switch (card.getSuit()) {
             case CLUBS:
-                imageIcon = new ImageIcon(this.getClass().getResource("/1.png"));
+                imageIcon = new ImageIcon(this.getClass().getResource("/16070.png"));
                 break;
             case HEARTS:
-                imageIcon = new ImageIcon(this.getClass().getResource("/4.png"));
+                imageIcon = new ImageIcon(this.getClass().getResource("/46070.png"));
                 break;
             case SPADES:
-                imageIcon = new ImageIcon(this.getClass().getResource("/3.png"));
+                imageIcon = new ImageIcon(this.getClass().getResource("/36070.png"));
                 break;
             case DIAMONDS:
-                imageIcon = new ImageIcon(this.getClass().getResource("/2.png"));
+                imageIcon = new ImageIcon(this.getClass().getResource("/26070.png"));
                 break;
         }
+
         String value = null;
         switch (card.getValue()) {
             case TWO:
@@ -124,36 +139,37 @@ public class BlackJWindow extends JFrame {
                 break;
             case ACE:
                 value = "A";
-            break;
+                break;
 
         }
-
-
-
-        JLabel suitLabel = new JLabel(imageIcon);
-        suitLabel.setBounds(10, 10, 25, 25);
+        JLabel suitLabel = new JLabel(value, imageIcon, SwingConstants.CENTER);
+        suitLabel.setBounds(0, 0, 100, 25);
+        suitLabel.setFont(new Font(suitLabel.getFont().getName(), Font.BOLD, 25));
         panel.add(suitLabel);
-        JLabel valueLabel = new JLabel(value);
-        valueLabel.setBounds(35, 10, 25, 25);
-        panel.add(valueLabel);
-        return panel;
+//        JLabel valueLabel = new JLabel(value);
 
+    //    valueLabel.setBounds(30, 0, 25, 25);
+  //      panel.add(valueLabel);
+        return panel;
     }
 
     public void updatePlayerCards(List<Card> cardList) {
         this.cardPlayerView.removeAll();
-        for (Card card : cardList) {
 
-            this.cardPlayerView.add(this.selectImage(card));
+        for (int i = 0; i < cardList.size(); i++) {
+            this.cardPlayerView.add(this.selectImage(cardList.get(i), i));
         }
+        this.repaint();
+
     }
 
     public void updateDealerCards(List<Card> cardList) {
         this.cardDealerView.removeAll();
-        for (Card card : cardList) {
 
-            this.cardDealerView.add(this.selectImage(card));
+        for (int i = 0; i < cardList.size(); i++) {
+            this.cardDealerView.add(this.selectImage(cardList.get(i), i));
         }
+        this.repaint();
     }
 
     public void updatePlayerScore(int score) {
@@ -266,8 +282,6 @@ public class BlackJWindow extends JFrame {
 //    public void updateDealerScore(int playerScore) { this.dealerScore.setText(playerScore + "");
 //    } //////////
 //}
-
-
 
 
 //    private  JPanel cardPlayerView;

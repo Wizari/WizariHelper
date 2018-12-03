@@ -1,4 +1,4 @@
-package com.gmail.danze.framework;
+package com.gmail.danze.framework.Game;
 
 import com.gmail.danze.trash.application.DanzeHelper;
 
