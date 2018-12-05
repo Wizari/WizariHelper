@@ -27,6 +27,35 @@ public class BlackJackLogic {
         addPlayerCard();
         addPlayerCard();
         addDealerCard();
+        if (playerSum == 21) {
+            System.out.println("21!");
+
+        }
+
+        window.addHitListener(e -> {
+            if (playerSum < 21) {
+                addPlayerCard();
+            }
+            if (playerSum > 21) {
+                System.out.println("Перебор!");
+
+            }
+//            System.out.println("Нажата кнопка Hit");
+        });
+
+        window.addStandListener(e -> {
+            for (int i = 0;dealerSum <= playerSum; addDealerCard()) {
+                            }
+            if (dealerSum > 21) {
+                System.out.println("Победа за игроком! !");
+            }
+            if (playerSum < dealerSum) {
+                if (dealerSum <= 21) {
+                    System.out.println("Победило казино!!");
+                }
+            }
+        });
+
     }
 
     public void addPlayerCard() {
@@ -42,4 +71,21 @@ public class BlackJackLogic {
         this.dealerSum = dealerCards.stream().mapToInt(card -> card.getValue().getScore()).sum();
         window.updateDealerScore(this.dealerSum);
     }
+
+//    public void hitListener() {
+//        window.addHitListener(e -> {
+////            frame.dispose();
+//        });
+////    }
+//
+//
+////        cards.add(new Card(Suit.SPADES, CardValue.NINE));
+////        int result = 0;
+////        for (Card card : cards) {
+////            result += card.getValue().getScore();
+////        }
+////        window.updateCards(cards);
+////        window.updateScore(result);
+////    });
+//    }
 }

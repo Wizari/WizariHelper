@@ -12,16 +12,29 @@ public class BlackJWindow extends JFrame {
 
     private JPanel cardPlayerView;
     private JPanel cardDealerView;
+
+    private JPanel pResultView;
+    private JPanel dResultView;
+    private JButton buttonPanel;
+
     private JLabel playerScore = new JLabel();
     private JLabel dealerScore = new JLabel();
-    private JButton hitButton = new JButton("Hit");
-    private JButton standButton = new JButton("Stand");
+    //    private JButton hitButton = new JButton("Hit");
+//    private JButton standButton = new JButton("Stand");
+    private JButton hitButton;
+    private JButton standButton;
 
     public BlackJWindow(String title) {
         super(title);
 
         this.cardDealerView = this.constructDealerCardView();
         this.cardPlayerView = this.constructPlayerCardView();
+
+        this.pResultView = this.constructPlayerResult();
+        this.dResultView = this.constructDealerResult();
+        this.hitButton = this.constructButtonHit();
+        this.standButton = this.constructButtonStand();
+
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(null);
         contentPanel.add(this.cardPlayerView);
@@ -32,49 +45,91 @@ public class BlackJWindow extends JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setContentPane(contentPanel);
+//        this.add(this.constructButtonPanel(), BorderLayout.SOUTH);
+//        this.add(this.constructButtonPanel();
+        contentPanel.add(this.pResultView);
+        contentPanel.add(this.dResultView);
+        contentPanel.add(this.hitButton);
+        contentPanel.add(this.standButton);
+//        this.add(this.constructResultView);  //<<--- Сам
+//        this.add(this.constructButtonPanel(), BorderLayout.SOUTH);  ; // <<--- Сам
+    }
 
+    private JPanel constructPlayerResult() {
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setBounds(10, 10, 200, 40);
+        JLabel suitLabel = new JLabel("Score: ");
+        suitLabel.setFont(new Font(suitLabel.getFont().getName(), Font.BOLD, 15));
+        suitLabel.setBounds(10, 10, 100, 40);
+        this.playerScore.setBounds(60, 10, 100, 40);
+        playerScore.setFont(new Font(suitLabel.getFont().getName(), Font.BOLD, 15));
+        panel.add(this.playerScore);
+        panel.add(suitLabel);
+        return panel;
+    }
 
-//        this.add(this.constructResultView(), BorderLayout.CENTER);  <<--- Сам
-//        this.add(this.constructButtonPanel(), BorderLayout.SOUTH);  <<--- Сам
+    private JPanel constructDealerResult() {
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setBounds(615, 10, 100, 40);
+        JLabel suitLabel = new JLabel("Score: ");
+        suitLabel.setFont(new Font(suitLabel.getFont().getName(), Font.BOLD, 15));
+        suitLabel.setBounds(10, 10, 100, 40);
+        this.dealerScore.setBounds(60, 10, 100, 40);
+        dealerScore.setFont(new Font(suitLabel.getFont().getName(), Font.BOLD, 15));
+        panel.add(this.dealerScore);
+        panel.add(suitLabel);
+        return panel;
     }
 
     private JPanel constructDealerCardView() {
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        panel.setBounds(600, 10, 200, 800);
+        panel.setBounds(615, 60, 200, 400);
         return panel;
     }
 
     private JPanel constructPlayerCardView() {
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        panel.setBounds(0, 10, 200, 800);
+        panel.setBounds(15, 60, 200, 400);
         return panel;
     }
 
     private Component constructButtonPanel() {
         JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setBounds(0, 600, 100, 800);
+        hitButton.setBounds(250, 0, 100, 50);
+        standButton.setBounds(450, 0, 100, 50);
         panel.add(hitButton);
         panel.add(standButton);
         return panel;
     }
 
-    private Component constructResultView() {
-        JPanel playerScore = new JPanel();
-        playerScore.add(new JLabel("Score: "));
-        playerScore.add(this.playerScore);
-
-        JPanel dealerScore = new JPanel();
-        dealerScore.add(new JLabel("Score: "));
-        dealerScore.add(this.dealerScore);
-
-        JPanel centerPanel = new JPanel(new BorderLayout());
-        centerPanel.add(playerScore, BorderLayout.WEST);
-        centerPanel.add(dealerScore, BorderLayout.EAST);
-        return centerPanel;
+    private JButton constructButtonHit() {
+        JButton button = new JButton("Hit");
+        button.setLayout(null);
+        button.setFont(new Font(button.getFont().getName(), Font.BOLD, 20));
+        button.setFocusPainted(false);
+        button.setBounds(290, 600, 100, 50);
+        return button;
     }
 
-
+    private JButton constructButtonStand() {
+        JButton button = new JButton("Stand");
+        button.setLayout(null);
+        button.setFont(new Font(button.getFont().getName(), Font.BOLD, 20));
+        button.setFocusPainted(false);
+        button.setBounds(410, 600, 100, 50);
+        return button;
+    }
+//    private Component constructButtonPanel() {
+//        JPanel panel = new JPanel();
+//        panel.add(hitButton);
+//        panel.add(standButton);
+//        return panel;
 
     public Component selectImage(Card card, int index) {
 
@@ -148,8 +203,8 @@ public class BlackJWindow extends JFrame {
         panel.add(suitLabel);
 //        JLabel valueLabel = new JLabel(value);
 
-    //    valueLabel.setBounds(30, 0, 25, 25);
-  //      panel.add(valueLabel);
+        //    valueLabel.setBounds(30, 0, 25, 25);
+        //      panel.add(valueLabel);
         return panel;
     }
 
@@ -180,15 +235,221 @@ public class BlackJWindow extends JFrame {
         this.dealerScore.setText(score + "");
     }
 
-    public void addHitListener(ActionListener listener) {
-        hitButton.addActionListener(listener);
-    }
+    public void addHitListener(ActionListener listener) { hitButton.addActionListener(listener); }
 
     public void addStandListener(ActionListener listener) {
         standButton.addActionListener(listener);
     }
 
 }
+
+//
+//package com.gmail.danze.games.blackjack.view;
+//
+//        import com.gmail.danze.games.blackjack.model.Card;
+//
+//        import javax.swing.*;
+//        import java.awt.*;
+//        import java.awt.event.ActionListener;
+//        import java.util.List;
+//
+//
+//public class BlackJWindow extends JFrame {
+//
+//    private JPanel cardPlayerView;
+//    private JPanel cardDealerView;
+//    private JLabel playerScore = new JLabel();
+//    private JLabel dealerScore = new JLabel();
+//    private JButton hitButton = new JButton("Hit");
+//    private JButton standButton = new JButton("Stand");
+//
+//    public BlackJWindow(String title) {
+//        super(title);
+//
+//        this.cardDealerView = this.constructDealerCardView();
+//        this.cardPlayerView = this.constructPlayerCardView();
+//        JPanel contentPanel = new JPanel();
+//        contentPanel.setLayout(null);
+//        contentPanel.add(this.cardPlayerView);
+//        contentPanel.add(this.cardDealerView);
+//
+//        this.setLayout(null);
+//        this.setSize(800, 800);
+//        this.setLocationRelativeTo(null);
+//        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//        this.setContentPane(contentPanel);
+//
+//
+//        this.add(this.constructResultView(), BorderLayout.CENTER);  //<<--- Сам
+////        this.add(this.constructButtonPanel(), BorderLayout.SOUTH); // <<--- Сам
+//    }
+//
+//    private JPanel constructDealerResult() {
+//        JPanel panel = new JPanel();
+//        panel.setLayout(null);
+//        panel.setBounds(0, 10, 200, 30);
+//        return panel;
+//    }
+//
+//    private JPanel constructPlayerResult() {
+//        JPanel panel = new JPanel();
+//        panel.setLayout(null);
+//        panel.setBounds(600, 10, 200, 30);
+//        return panel;
+//    }
+//
+//    private JPanel constructDealerCardView() {
+//        JPanel panel = new JPanel();
+//        panel.setLayout(null);
+//        panel.setBounds(600, 50, 200, 500);
+//        return panel;
+//    }
+//
+//    private JPanel constructPlayerCardView() {
+//        JPanel panel = new JPanel();
+//        panel.setLayout(null);
+//        panel.setBounds(0, 50, 200, 500);
+//        return panel;
+//    }
+//
+//    private Component constructButtonPanel() {
+//        JPanel panel = new JPanel();
+//        panel.add(hitButton);
+//        panel.add(standButton);
+//        return panel;
+//    }
+//
+//    private Component constructResultView() {
+//        JPanel playerScore = new JPanel();
+//        playerScore.add(new JLabel("Score: "));
+//        playerScore.add(this.playerScore);
+//
+//        JPanel dealerScore = new JPanel();
+//        dealerScore.add(new JLabel("Score: "));
+//        dealerScore.add(this.dealerScore);
+//
+//        JPanel centerPanel = new JPanel(new BorderLayout());
+//        centerPanel.add(playerScore, BorderLayout.WEST);
+//        centerPanel.add(dealerScore, BorderLayout.EAST);
+//        return centerPanel;
+//    }
+//
+//
+//
+//    public Component selectImage(Card card, int index) {
+//
+//        JPanel panel = new JPanel();
+//        panel.setLayout(null);
+//        int height = 30;
+//        panel.setBounds(0, index * height, 200, height);
+//
+//        ImageIcon imageIcon = null;
+//        switch (card.getSuit()) {
+//            case CLUBS:
+//                imageIcon = new ImageIcon(this.getClass().getResource("/16070.png"));
+//                break;
+//            case HEARTS:
+//                imageIcon = new ImageIcon(this.getClass().getResource("/46070.png"));
+//                break;
+//            case SPADES:
+//                imageIcon = new ImageIcon(this.getClass().getResource("/36070.png"));
+//                break;
+//            case DIAMONDS:
+//                imageIcon = new ImageIcon(this.getClass().getResource("/26070.png"));
+//                break;
+//        }
+//
+//        String value = null;
+//        switch (card.getValue()) {
+//            case TWO:
+//                value = "2";
+//                break;
+//            case THREE:
+//                value = "3";
+//                break;
+//            case FOUR:
+//                value = "4";
+//                break;
+//            case FIVE:
+//                value = "5";
+//                break;
+//            case SIX:
+//                value = "6";
+//                break;
+//            case SEVEN:
+//                value = "7";
+//                break;
+//            case EIGHT:
+//                value = "8";
+//                break;
+//            case NINE:
+//                value = "9";
+//                break;
+//            case TEN:
+//                value = "10";
+//                break;
+//            case JACK:
+//                value = "J";
+//                break;
+//            case QUEEN:
+//                value = "Q";
+//                break;
+//            case KING:
+//                value = "K";
+//                break;
+//            case ACE:
+//                value = "A";
+//                break;
+//
+//        }
+//        JLabel suitLabel = new JLabel(value, imageIcon, SwingConstants.CENTER);
+//        suitLabel.setBounds(0, 0, 100, 25);
+//        suitLabel.setFont(new Font(suitLabel.getFont().getName(), Font.BOLD, 25));
+//        panel.add(suitLabel);
+////        JLabel valueLabel = new JLabel(value);
+//
+//        //    valueLabel.setBounds(30, 0, 25, 25);
+//        //      panel.add(valueLabel);
+//        return panel;
+//    }
+//
+//    public void updatePlayerCards(List<Card> cardList) {
+//        this.cardPlayerView.removeAll();
+//
+//        for (int i = 0; i < cardList.size(); i++) {
+//            this.cardPlayerView.add(this.selectImage(cardList.get(i), i));
+//        }
+//        this.repaint();
+//
+//    }
+//
+//    public void updateDealerCards(List<Card> cardList) {
+//        this.cardDealerView.removeAll();
+//
+//        for (int i = 0; i < cardList.size(); i++) {
+//            this.cardDealerView.add(this.selectImage(cardList.get(i), i));
+//        }
+//        this.repaint();
+//    }
+//
+//    public void updatePlayerScore(int score) {
+//        this.playerScore.setText(score + "");
+//    }
+//
+//    public void updateDealerScore(int score) {
+//        this.dealerScore.setText(score + "");
+//    }
+//
+//    public void addHitListener(ActionListener listener) {
+//        hitButton.addActionListener(listener);
+//    }
+//
+//    public void addStandListener(ActionListener listener) {
+//        standButton.addActionListener(listener);
+//    }
+//
+//}
+
 
 //    private  JPanel cardPlayerView;
 //    private  JPanel dealerCardView;
