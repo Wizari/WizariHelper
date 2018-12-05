@@ -19,6 +19,17 @@ public class BlackJackGame {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
 ////        int [] xDeal = xdealer.stream().mapToInt(i->i).toArray();
 //        List<Card> cards = new ArrayList<>();
 //        List<Card> dealCards = new ArrayList<>();
